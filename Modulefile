@@ -1,0 +1,8 @@
+name 'capriza-s3cmd'
+version '0.1.1'
+source 'git://github.com/capriza/capriza-s3cmd.git'
+author 'Alon Becker'
+license 'Apache 2.0'
+summary 'S3cmd Module'
+description 'S3cmd Module for file downloads of s3 objects using s3cmd get'
+project_page 'https://github.com/capriza/capriza-s3cmd'
