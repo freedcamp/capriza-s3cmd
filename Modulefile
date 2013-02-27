@@ -1,5 +1,5 @@
 name 'capriza-s3cmd'
-version '0.1.2'
+version '0.2.1'
 source 'git://github.com/capriza/capriza-s3cmd.git'
 author 'Alon Becker'
 license 'Apache 2.0'
