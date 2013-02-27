@@ -46,7 +46,8 @@ Installs and configures s3cmd command line tool (http://s3tools.org/s3cmd).
 Downloads an object from s3.
 
 s3cmd::commands::get{'local file':
-  s3_object => 'https://s3.amazonaws.com/(bucket name)/(object name)',
+  s3_object => 's3://(bucket name)/(object name)',
+  cwd => 'working directory',
   owner => 'owner',
 }
 
