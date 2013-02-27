@@ -3,7 +3,7 @@ define s3cmd::commands::get(
   $owner,
 ) {
   exec{$name:
-     command => "s3cmd ${s3_object} ${name}",
+     command => "s3cmd get ${s3_object} ${name}",
      path=>'/usr/bin',
      user => $owner,
      creates => $name,
