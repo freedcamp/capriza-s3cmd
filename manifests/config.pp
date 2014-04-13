@@ -11,6 +11,7 @@ class s3cmd::config(
 
   file{"$homedir/.s3cfg":
       owner => $owner,
+      mode  => '0400',
       content => template("s3cmd/s3cfg.erb"),
   }
 
