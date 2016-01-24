@@ -5,14 +5,14 @@ class s3cmd::config(
   $owner,
 ) {
   $homedir = $owner ? {
-    root => '/root',
-    default => "/home/$owner",
+    root    => '/root',
+    default => "/home/${owner}",
   }
 
-  file{"$homedir/.s3cfg":
-      owner => $owner,
-      mode  => '0400',
-      content => template("s3cmd/s3cfg.erb"),
+  file{"${homedir}/.s3cfg":
+    owner   => $owner,
+    mode    => '0400',
+    content => template("${module_name}/s3cfg.erb"),
   }
 
 }

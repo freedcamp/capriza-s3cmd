@@ -1,17 +1,27 @@
-class s3cmd::install (){
-
-  if $osfamily == 'redhat' {
-    file {'/etc/yum.repos.d/s3tools.repo':
-      source => 'puppet:///modules/s3cmd/etc/yum.repos.d/s3tools.repo',
+class s3cmd::install (
+  $version     = 'installed',
+  $enable_repo = true,
+) {
+  if $enable_repo {
+    case $osfamily {
+      'Redhat' : {
+        file { '/etc/yum.repos.d/s3tools.repo':
+          ensure    => file,
+          owner     => 'root',
+          group     => 'root',
+          mode      => '0644',
+          source    => "puppet:///modules/${module_name}/s3tools.repo",
+          subscribe => Package['s3cmd'],
+        }
+      }
+      default  : {
+        fail("${osfamily} is not supported")
+      }
     }
-    $s3cmd_require = File['/etc/yum.repos.d/s3tools.repo']
   } else {
-    $s3cmd_require = undef
+    file { '/etc/yum.repos.d/s3tools.repo': ensure => absent, }
   }
 
-  package {'s3cmd':
-      ensure => installed,
-      require =>  $s3cmd_require,
-  }
+  package { 's3cmd': ensure => $version, }
 
 }
