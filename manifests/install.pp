@@ -19,7 +19,10 @@ class s3cmd::install (
       }
     }
   } else {
-    file { '/etc/yum.repos.d/s3tools.repo': ensure => absent, }
+    file { '/etc/yum.repos.d/s3tools.repo':
+      ensure    => absent,
+      subscribe => Package['s3cmd'],
+    }
   }
 
   package { 's3cmd': ensure => $version, }
