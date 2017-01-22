@@ -6,7 +6,7 @@ class s3cmd::install (
     case $::osfamily {
       'RedHat' : {
         file { '/etc/yum.repos.d/s3tools.repo':
-          ensure    => file,
+          ensure    => 'file',
           owner     => 'root',
           group     => 'root',
           mode      => '0644',
