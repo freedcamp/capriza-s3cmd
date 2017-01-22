@@ -4,7 +4,7 @@ class s3cmd::install (
 ) {
   if $enable_repo {
     case $::osfamily {
-      'Redhat' : {
+      'RedHat' : {
         file { '/etc/yum.repos.d/s3tools.repo':
           ensure    => file,
           owner     => 'root',
@@ -21,7 +21,6 @@ class s3cmd::install (
   } else {
     file { '/etc/yum.repos.d/s3tools.repo':
       ensure    => absent,
-      subscribe => Package['s3cmd'],
     }
   }
 
