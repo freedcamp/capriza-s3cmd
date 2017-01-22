@@ -11,7 +11,7 @@ class s3cmd::install (
           group     => 'root',
           mode      => '0644',
           source    => "puppet:///modules/${module_name}/s3tools.repo",
-          subscribe => Package['s3cmd'],
+          before    => Package['s3cmd'],
         }
       }
       default  : {
