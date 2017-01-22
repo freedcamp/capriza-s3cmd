@@ -3,7 +3,7 @@ class s3cmd::install (
   $enable_repo = true,
 ) {
   if $enable_repo {
-    case $osfamily {
+    case $::osfamily {
       'Redhat' : {
         file { '/etc/yum.repos.d/s3tools.repo':
           ensure    => file,
@@ -15,7 +15,7 @@ class s3cmd::install (
         }
       }
       default  : {
-        fail("${osfamily} is not supported")
+        fail("${::osfamily} is not supported")
       }
     }
   } else {
